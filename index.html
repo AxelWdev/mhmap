@@ -70,9 +70,15 @@
 
    <script>
   function addTimer(event) {
-  const targetDate = new Date().getTime() + 21600000; // 6 hours from now
+  let targetDate;
   const x = event.clientX - event.target.getBoundingClientRect().left;
   const y = event.clientY - event.target.getBoundingClientRect().top;
+
+  if (y < 556) { // check if the timer is placed above a chosen y position
+    targetDate = new Date().getTime() + 21600000; // 6 hours from now
+  } else { // otherwise, set targetDate to 4 hours and 30 minutes from now
+    targetDate = new Date().getTime() + 16200000;
+  }
 
   const container = document.createElement('div');
   container.classList.add('timer-container');
@@ -114,6 +120,7 @@
     }
   }, 1000);
 }
+
 
   document.getElementById('map').addEventListener('click', addTimer);
 
