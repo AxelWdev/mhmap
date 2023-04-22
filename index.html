@@ -11,7 +11,7 @@
 
       #map-container {
         position: relative;
-        width: 640px;
+        width: 1920px;
         height: 2807px; 
         margin: auto;
       }
@@ -22,7 +22,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('map.jpg');
+        background-image: url('map.png');
         background-size: cover;
       }
 
@@ -74,9 +74,13 @@
   const x = event.clientX - event.target.getBoundingClientRect().left;
   const y = event.clientY - event.target.getBoundingClientRect().top;
 
+  
   if (y < 556) { // check if the timer is placed above a chosen y position
     targetDate = new Date().getTime() + 14100000; // 3 55  from now for Tibet 
-  } else { // otherwise, set targetDate to 3 hours and 42 minutes from now
+  } else if(x < 650) {
+        targetDate = new Date().getTime() + 14100000;
+    }
+  else { // otherwise, set targetDate to 3 hours and 42 minutes from now
     targetDate = new Date().getTime() + 13320000;
   }
 
